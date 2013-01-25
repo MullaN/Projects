@@ -82,10 +82,11 @@ namespace SquareChase
             // TODO: Add your update logic here
             if (timeRemaining == 0.0f)
             {
-                if (timeTaken > 1.0f && squareSize < 25)
+                if (timeTaken > 1.0f && squareSize < 25 && TimePerSquare < 1.75f)
                 {
                     squareSize += 2;
                     timeTaken = 0;
+                    TimePerSquare += 0.1f;
                 }
                 currentSquare = new Rectangle(
                     rand.Next(0, this.Window.ClientBounds.Width - 25),
@@ -104,7 +105,7 @@ namespace SquareChase
                 {
                     squareSize -= 2;
                 }
-                TimePerSquare = TimePerSquare * (float) 0.9;
+                TimePerSquare -= 0.1f;
                 timeRemaining = 0.0f;
             }
             timeRemaining = MathHelper.Max(0, timeRemaining - (float)
